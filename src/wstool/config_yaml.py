@@ -71,7 +71,7 @@ def get_yaml_from_uri(uri):
         if not stream:
             raise MultiProjectException("couldn't load config uri %s" % uri)
         try:
-            yamldata = yaml.safe_load(stream)
+            yamldata = yaml.safe_load(stream, Loader=yaml.FullLoader)
         except yaml.YAMLError as yame:
             raise MultiProjectException(
                 "Invalid multiproject yaml format in [%s]: %s" % (uri, yame))
